@@ -8,8 +8,6 @@ package:
 source:
   - url: https://github.com/osqp/qdldl/archive/v{{ version }}.tar.gz
     sha256: aeb1b2d76849c13e9803760a4c2e26194bf80dcc9614ae25ca6bcc404dc70d65
-    patches:
-      - fix_build_shared_libs_and_windows_shared.patch
 
 build:
   number: 0
