@@ -1,5 +1,5 @@
 {% set name = "libqdldl" %}
-{% set version = "0.1.7" %}
+{% set version = "0.1.8" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/osqp/qdldl/archive/v{{ version }}.tar.gz
-    sha256: 631ae65f367859fa1efade1656e4ba22b7da789c06e010cceb8b29656bf65757
+    sha256: ecf113fd6ad8714f16289eb4d5f4d8b27842b6775b978c39def5913f983f6daa
 
 build:
   number: 0
@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - make                               # [not win]
     - cmake
