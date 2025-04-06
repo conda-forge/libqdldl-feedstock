@@ -25,17 +25,17 @@ requirements:
     - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
 
 tests:
-  - script:
-    - if: win
-      then: |
-        if not exist %PREFIX%\Library\include\qdldl\qdldl.h exit 1
-        if not exist %PREFIX%\Library\lib\qdldl.lib exit 1
-        if not exist %PREFIX%\Library\bin\qdldl.dll exit 1
-        if not exist %PREFIX%\Library\lib\cmake\qdldl\qdldl-config.cmake exit 1
-      else: |
-        test -f ${PREFIX}/include/qdldl/qdldl.h
-        test -f ${PREFIX}/lib/cmake/qdldl/qdldl-config.cmake
-        test -f ${PREFIX}/lib/libqdldl${SHLIB_EXT}
+  - package_contents:
+      files:
+        - if: win
+          then: |
+            Library\lib\cmake\qdldl\qdldl-config.cmake
+          else: |
+            lib/cmake/qdldl/qdldl-config.cmake
+      include:
+        - qdldl/qdldl.h
+      lib:
+        - qdldl
 
 about:
   homepage: https://github.com/osqp/qdldl
