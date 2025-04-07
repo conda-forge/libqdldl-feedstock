@@ -1,9 +1,8 @@
 context:
-  name: libqdldl
   version: 0.1.8
 
 package:
-  name: ${{ name|lower }}
+  name: libqdldl
   version: ${{ version }}
 
 source:
@@ -22,7 +21,7 @@ requirements:
       then: make
     - cmake
   run_exports:
-    - ${{ pin_subpackage(name, upper_bound='x.x.x') }}
+    - ${{ pin_subpackage('libqdldl', upper_bound='x.x.x') }}
 
 tests:
   - package_contents:
