@@ -1,0 +1,48 @@
+context:
+  version: 0.1.8
+
+package:
+  name: libqdldl
+  version: ${{ version }}
+
+source:
+  - url: https://github.com/osqp/qdldl/archive/v${{ version }}.tar.gz
+    sha256: ecf113fd6ad8714f16289eb4d5f4d8b27842b6775b978c39def5913f983f6daa
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - if: not win
+      then: make
+    - cmake
+  run_exports:
+    - ${{ pin_subpackage('libqdldl', upper_bound='x.x.x') }}
+
+tests:
+  - package_contents:
+      lib:
+        - qdldl
+      include:
+        - qdldl/qdldl.h
+      files:
+        - if: win
+          then: |
+            Library\lib\cmake\qdldl\qdldl-config.cmake
+          else: |
+            lib/cmake/qdldl/qdldl-config.cmake
+
+about:
+  homepage: https://github.com/osqp/qdldl
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: A free LDL factorisation routine.
+
+extra:
+  recipe-maintainers:
+    - traversaro
+    - h-vetinari
