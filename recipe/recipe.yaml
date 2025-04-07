@@ -25,16 +25,16 @@ requirements:
 
 tests:
   - package_contents:
+      lib:
+        - qdldl
+      include:
+        - qdldl/qdldl.h
       files:
         - if: win
           then: |
             Library\lib\cmake\qdldl\qdldl-config.cmake
           else: |
             lib/cmake/qdldl/qdldl-config.cmake
-      include:
-        - qdldl/qdldl.h
-      lib:
-        - qdldl
 
 about:
   homepage: https://github.com/osqp/qdldl
