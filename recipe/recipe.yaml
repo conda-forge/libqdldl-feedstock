@@ -10,7 +10,7 @@ source:
     sha256: 7d1285b2db15cf2730dc83b3d16ed28412f558591108cca4f28d4438bf72ceed
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -31,10 +31,8 @@ tests:
         - qdldl/qdldl.h
       files:
         - if: win
-          then: |
-            Library\lib\cmake\qdldl\qdldl-config.cmake
-          else: |
-            lib/cmake/qdldl/qdldl-config.cmake
+          then: Library\lib\cmake\qdldl\qdldl-config.cmake
+          else: lib/cmake/qdldl/qdldl-config.cmake
 
 about:
   homepage: https://github.com/osqp/qdldl
